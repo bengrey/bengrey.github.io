@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="ua">
+<head>
+<meta charset="UTF-8">
+             <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+             <title>Document</title>
+             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<style>
+    header {
+        position: relative;
+    }
+    .header-top {
+    background: #383838;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    }
+    .header-top-in {
+        display: flex;
+        justify-content: space-between;
+    }
+    .header-top-in .social-left a+a{
+        margin-left: 14px;
+    }
+    .social-lang a{
+        color: #fff;
+        opacity: 0.6;
+    }
+        .social-lang a+a{
+        margin-left: 14px;
+        }
+
+        .social-lang a:hover{
+            color: #11ce93;
+            opacity: 1;
+        }
+
+    .header-top-in img {
+        height: 14px;
+        opacity: 0.6;
+        width: 14px;
+        display: inline-flex;
+    }
+        .header-top-in img+img {
+        margin-left: 30px;
+        }
+
+    .header-top-in img:hover {
+        opacity: 1;
+    }
+    .header-bottom {
+    position: relative;
+    transition: 0.3s all ease;
+    height: 100px;
+    }
+    .header-bottom .header-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0 21px;
+    align-items: center;
+    }
+        .header-bottom .header-main .header-logo a img {
+        max-width: 360px;
+        }
+        .header-bottom .header-main .menu ul {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        }
+                .header-bottom .header-main .menu ul li+li {
+                margin-left: 38px;
+                }
+                        .header-bottom .header-main .menu ul li a {
+                        font-family: "MontserratSemiBold", sans-serif;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        }
+
+.hashtag{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;}
+.hashtag a{height:35px;padding:0 20px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:135px;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;background-size:18px 16px;border-radius:15px;text-transform:uppercase;}
+.hashtag a+a{margin-left:15px;}
+.hashtag a:last-child{display:block;height:35px;width:21px;padding:0;border:none;background:url(http://localhost:3000/img/search.svg) center no-repeat;background-size:100%;}
+.hashtag a:last-child:hover{border:none;color:#242424;}
+.hashtag a.straight{background-color:#11ce93;color:#fff;background:#11ce93 url(http://localhost:3000/img/hashtag.svg) 20px center no-repeat;border:1px solid #11ce93;background-size:18px 16px;}
+.hashtag a.straight:hover{color:#242424;background:transparent url(http://localhost:3000/img/hashtag-black.svg) 20px center no-repeat;background-size:18px 16px;}
+.hashtag a.straight span{margin-left:34px;}
+.hashtag a.reverse{color:#242424;background:transparent url(http://localhost:3000/img/fountain-pen.svg) 20px center no-repeat;background-size:18px 16px;border:1px solid #11ce93;padding:0 18px;}
+.hashtag a.reverse:hover{background:#11ce93 url(http://localhost:3000/img/fountain-pen-black.svg) 20px center no-repeat;background-size:18px 16px;color:#fff;}
+.hashtag a.reverse span{margin-left:30px;}
+.search-modal {
+visibility: hidden;
+}
+.search-modal.open {
+visibility: visible;
+position: absolute;
+background: rgba(0,0,0,.8);
+bottom: 0;
+height: 100%;
+left: 0;
+width: 100%;
+}
+.search-box {
+display: flex;
+justify-content: center;
+align-items: center;
+height: 99px;
+}
+.search-modal input:first-of-type{width:550px;max-width:100%;height:50px;background:0 0;border-radius:50px;border:1px solid #fff;padding:0 84px 0 30px;color:#fff;-webkit-box-sizing:border-box;box-sizing:border-box;}
+.search-modal input:first-of-type::-webkit-input-placeholder{color:#879299;}
+.search-modal input:first-of-type::-moz-placeholder{color:#879299;}
+.search-modal input:first-of-type:-ms-input-placeholder{color:#879299;}
+.search-modal input:last-of-type{background:transparent url(http://localhost:3000/img/search-white.svg) no-repeat;font-size:0;height:35px;width:35px;margin-left:-60px;border:none;}
+.search-modal .close{background:url(http://localhost:3000/img/close-search.svg);background-size:cover;border:none;position:absolute;right:50px;height:30px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;outline:0;-webkit-align-self:center;-ms-flex-item-align:center;align-self:center;width:30px;}
+.header-main-in {
+display: flex;
+align-items: center;
+}
+.hashtag {
+margin-left: 40px;
+}
+ header .toggler {
+    display: none !important;
+    }
+    .modal-wrap.open {
+        opacity: 1;
+        visibility: visible;
+    }
+    .search-modal{position:absolute;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+    .search-modal:before{content:'';position:absolute;left:0;top:0;width:100%;height:100%;background:#383838;opacity:.96;}
+    .search-modal-in{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}
+    .search-modal .container{position:relative;}
+    .search-modal .close{position:absolute;right:0;top:-webkit-calc(50% - 9px);top:calc(50% - 9px);width:18px;height:18px;background:url(https://www.forumeast.eu/wp-content/themes/forumeast/assets/img/close-white.svg) center no-repeat;background-size:cover;border:none;padding:0;opacity:.6;}
+    .search-modal .close:hover{opacity:1;}
+    .search-form form{position:relative;}
+    .search-form form ::-webkit-input-placeholder{color:#fff;opacity:.6;}
+    .search-form form :-ms-input-placeholder{color:#fff;opacity:.6;}
+    .search-form form ::-ms-input-placeholder{color:#fff;opacity:.6;}
+    .search-form form ::placeholder{color:#fff;opacity:.6;}
+    .search-form form input[type=search]{width:550px;max-width:100%;height:50px;-webkit-border-radius:50px;border-radius:50px;border:1px solid rgba(255,255,255,.6);background:0 0;padding:0 84px 0 30px;text-transform:uppercase;color:#fff;font-size:14px;font-weight:500;}
+    .search-form form input[type=submit]{position:absolute;right:1px;top:1px;width:84px;height:48px;-webkit-border-radius:48px;border-radius:48px;border:none;background:url(https://www.forumeast.eu/wp-content/themes/forumeast/assets/img/search-white.svg) center no-repeat/25px auto;opacity:.6;}
+    .search-form form input[type=submit]:hover{opacity:1;}
+    .header-main .menu ul li a {
+        text-transform: uppercase;
+        color: #242424;
+        font-weight: 400;
+        text-decoration: none;
+        border-bottom: 1px solid transparent;
+    }
+    .header-main .menu ul li a:hover {
+        color: #879299;
+        border-bottom: 1px solid #11ce93;
+    }
+    .modal-wrap{left:0;top:0;width:100%;height:100%;opacity:0;visibility:hidden;-webkit-transition:all .2s ease;-o-transition:all .2s ease;transition:all .2s ease;}
+    @media (max-width:767.98px){
+    .search-form{width:100%;}
+    .search-form form{width:-webkit-calc(100% - 35px);width:calc(100% - 35px);}
+    .search-form form input[type=search]{width:100%;}
+    }
+@media screen and (max-width: 1199.98px) {
+.header-bottom .header-main .header-logo a img {
+    max-width: 280px;
+}
+                .header-bottom .header-main .menu ul li+li {
+                margin-left: 25px;
+                }
+
+}
+header .toggler{display:none;}
+header .toggler{height:25px;width:40px;position:relative;top:-webkit-calc(50% - 12px);top:calc(50% - 12px);display:block;right:0;}
+header .toggler span{height:3px;width:40px;background:#242424;position:absolute;top:11px;}
+header .toggler::after, header .toggler:before{content:"";position:absolute;width:40px;height:3px;background:#242424;}
+header .toggler:before{top:0;}
+header .toggler::after{bottom:0;}
+header .toggler:hover::after, header .toggler:hover:before{content:"";position:absolute;width:40px;height:3px;background:#11ce93;}
+.toggler:hover span {
+background:#11ce93;}
+.back {
+position: fixed;
+top: 0;
+background: #f6f6f6;
+width: 100%;
+z-index: 200;
+}
+.search-modal:before {
+content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+@media screen and (max-width:991px) {
+  .header-main-in {
+  display: none;
+  }
+  header .toggler {
+  display: block !important;
+  }
+  .header-bottom {
+  height: 90px;
+    background: #f6f6f6;
+  }
+  .header-bottom.open .header-main-in {
+       display: flex;
+       justify-content: space-between;
+       background: #f6f6f6;
+       left: 0;
+       padding-bottom: 20px;
+  width: 690px;
+  margin: 0 auto;
+  }
+  .header_main-in {
+   background: #f6f6f6;
+         width: 100%;
+         left: 0;
+                position: absolute;
+top: 100%;
+  }
+   .search-modal{height:141px;}
+      .header_main-in {
+      display: none;
+      }
+      .header-bottom.open .header_main-in {
+      display: flex;
+      }
+      .header-bottom .header-main .menu ul li a {
+      font-size: 14px;
+      }
+      .search-modal.open {
+      height: 141px;
+      }
+}
+@media screen and (max-width:767.98px) {
+.header-bottom.open .header-main-in {
+width: 510px;
+flex-direction: column;
+}
+.menu ul {
+display: flex;
+flex-direction: column;
+}
+.header-bottom .header-main .menu ul li+li {
+margin: 12px 0 0 0;
+}
+.hashtag {
+      margin-top: 20px;
+      margin-left: 0;
+      }
+.search-modal {
+    height: 260px !important;
+}
+.header-bottom .header-main .menu ul {
+padding: 0;
+}
+}
+@media screen and (max-width: 575.98px) {
+  .header-bottom .header-main .header-logo a img {
+      max-width: 220px;
+  }
+  .header-bottom .header-main .menu ul {
+  padding: 0;
+  }
+  .header-bottom {
+      height: auto;
+      }
+      .search-modal {
+          height: 250px !important;
+      }
+}
+</style>
+  <header>
+      <div class="header-top">
+        <div class="container">
+          <div class="header-top-in">
+                        <div class="social-left">
+                            <a href="http://facebook.com"><img src="img/facebook.svg" alt=""></a>
+                            <a href="http://youtube.com"><img src="img/youtube.svg" alt=""></a>
+                            <a href="http://telegram.org"><img src="img/telegram.svg" alt=""></a>
+                        </div>
+                        <div class="social-lang">
+                            <a href="index.html">UA</a>
+                            <a href="#">RU</a>
+                            <a href="#">BY</a>
+                            <a href="about.html">EN</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <div class="header-main">
+            					<div class="header-logo">
+            						<a href="index.html">
+            						<img src="img/logo_ukr.svg" alt="">
+            						</a>
+            					</div>
+            					<div class="header_main-in">
+            					<div class="header-main-in">
+            					<div class="menu">
+            						<ul>
+            							<li><a href="pronas.html">Про НАС</a></li>
+            							<li><a href="announces.html">Анонси</a></li>
+            							<li><a href="contacts.html">Контакти</a></li>
+            						</ul>
+            					</div>
+            					<div class="hashtag">
+            						<a href="#" class="straight"><span>теми</span></a>
+            						<a href="#" class="reverse"><span>АВТОРИ</span></a>
+            						<a id="search"></a>
+            					</div>
+            					</div>
+            					</div>
+            					<div class="toggler">
+                                            					<span></span>
+                                            				</div>
+            				</div>
+            			</div>
+                    <div class="modal-wrap search-modal" style="">
+                                    <div class="container">
+                                        <div class="search-modal-in">
+                                            <div class="search-form">
+                                                <form action="/" method="get">
+                                                    <input type="search" name="s" placeholder="пошук">
+                                                    <input type="submit" value="">
+                                                </form>
+                                            </div>
+                                            <button class="close"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                        </div>
+
+  </header>
+  <p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p><p>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam aut beatae corporis distinctio ea eos explicabo in, iure labore laboriosam molestiae mollitia non quisquam tenetur. At eos ipsam quibusdam.
+</p>
+  <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+    crossorigin="anonymous"></script>
+  <script>
+  $('#search').on('click', function() {
+    $('.search-modal').toggleClass('open')
+    $('.close').on('click', function() {
+      $('.search-modal').removeClass('open')
+    })
+  });
+  $('.toggler').on('click', function() {
+    $('.header-bottom').toggleClass('open')
+  })
+  $(window).on('scroll load', function () {
+      if ($(this).scrollTop() >= 100) {
+          $('#upbutton').removeClass('hidden');
+      } else {
+          $('#upbutton').addClass('hidden');
+      }
+      if ($(this).scrollTop() >= 50) {
+          $('.header-bottom').addClass('back');
+      } else {
+          $('.header-bottom').removeClass('back');
+      }
+  });
+   $(window).on('load resize scroll', function() {
+          var headerTopHeight = headerTop.outerHeight();
+          var headerBottomHeight = headerBottom.outerHeight();
+          var headerRightHeight = headerRight.outerHeight();
+          if ($(this).scrollTop() > headerTopHeight) {
+              header.addClass('fixed');
+              body.css('padding-top', headerBottomHeight);
+          } else {
+              header.removeClass('fixed');
+              body.css('padding-top', 0);
+          }
+          if ($(this).scrollTop() > $(this).outerHeight()) {
+              $('.up').addClass('visible');
+          } else {
+              $('.up').removeClass('visible');
+          }
+      })
+          var body = $('body');
+              var header = $('.header');
+              var headerTop = $('.header-top');
+              var headerBottom = $('.header-bottom');
+              var headerRight = $('.header_main-in');
+              var headerToggle = $('.header-toggle');
+              var headerSToggle = $('.header-s-toggle');
+              var searchButton = $('.search-button');
+              var searchModal = $('.search-modal');
+              var modalOpen = $('.modal-open');
+              var modalClose = $('.modal-wrap .close');
+              var tabsButton = $('.tabs-nav button');
+              var artList = $('.articles-list');
+              var artList2 = $('.articles-changed-2');
+              var artList3 = $('.articles-changed-3');
+              var artSlider = $('.articles-slider');
+              var posSlider = $('.postulates-slider');
+              var valuesSlider = $('.values-slider');
+              var dropItem = $('.drop-item');
+              var dropToggle = $('.drop-item-toggle');
+              var dropCont = $('.drop-item-cont');
+          var headerTopHeight = headerTop.outerHeight();
+          var headerBottomHeight = headerBottom.outerHeight();
+          var headerRightHeight = headerRight.outerHeight();
+    </script>
+</body>
+</html>
